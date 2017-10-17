@@ -19,6 +19,7 @@ public class Avaliacoes {
 	private String comentario;
 	@NotNull
 	private Categoria categoria;
+	private Estabelecimentos estabelecimento;
 	
 	public int getNumero() {
 		return numero;
@@ -70,6 +71,12 @@ public class Avaliacoes {
 		this.categoria = categoria;
 	}
 	
+	public Estabelecimentos getEstabelecimento() {
+		return estabelecimento;
+	}
+	public void setEstabelecimento(Estabelecimentos estabelecimento) {
+		this.estabelecimento = estabelecimento;
+	}
 	@Override
 	public String toString() {
 		return "Avaliacao [numero=" + numero + ", dataAvaliacao=" + dataAvaliacao
