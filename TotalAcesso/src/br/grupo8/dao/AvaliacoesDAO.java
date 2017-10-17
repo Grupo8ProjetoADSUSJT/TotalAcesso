@@ -7,6 +7,9 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
+import javax.sql.DataSource;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import br.grupo8.entity.Avaliacoes;
@@ -14,7 +17,16 @@ import br.grupo8.entity.Categoria;
 @Repository
 public class AvaliacoesDAO {
 Connection conn;
-	public int inserirAvaliacoes(Avaliacoes avaliacoes) throws IOException {
+@Autowired
+public AvaliacoesDAO(DataSource ds) {
+	try {
+		conn = ds.getConnection();
+	} catch (SQLException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	}
+}
+	public int inserirAvaliacao(Avaliacoes avaliacoes) throws IOException {
 		int id = -1;
 		String comando = "insert into Avaliacao (comentario, avaliacao1,avaliacao2,avaliacao3"
 				+ ",avaliacao4, id_categoria, dataAvaliacao) "
@@ -49,9 +61,9 @@ Connection conn;
 	
 	public ArrayList<Avaliacoes> listarAvaliacoes(Categoria categoria) throws IOException{
 		ArrayList<Avaliacoes> lista = new ArrayList<>();
-		String query = "select c.id_chamado, c.descricao, c.dt_abertura, f.nm_fila, "+
-				"c.dt_fechamento, c.status "+ 
-				"from chamado c, fila f where c.id_fila = f.id_fila and c.id_fila=?";
+		String query = "select a.id_avalicao, a.comentario, a.dt_avalicao, c.nome_categoria, "+
+				"a.avaliacao1, a.avaliacao2,a.avaliacao3,a.avaliacao4 "+ 
+				"from avaliacao a, categoria c where c.id_categoria = a.id_categoria and c.id_categoria=?";
 		
 		try(PreparedStatement pst = conn.prepareStatement(query);){
 			pst.setInt(1, categoria.getId());

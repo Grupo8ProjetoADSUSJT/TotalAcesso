@@ -21,9 +21,7 @@ AvaliacoesDAO dao;
 	}
 	
 	public int novoChamado(Avaliacoes avaliacoes) throws IOException{
-		avaliacoes.setDataAbertura(new Date());
-		avaliacoes.setDataFechamento(null);
-		avaliacoes.setStatus(Avaliacoes.ABERTO);
+		avaliacoes.setDataAvaliacao(new Date());
 		
 		return dao.inserirAvaliacao(avaliacoes);
 	}

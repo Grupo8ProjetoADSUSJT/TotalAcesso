@@ -21,12 +21,6 @@ public class EstabelecimentosService{
 	}
 	
 	public int novoEstabelecimento(Estabelecimentos estabelecimentos) throws IOException{
-		estabelecimentos.setNome();
-		estabelecimentos.setEnd();
-		estabelecimentos.setTel();
-		estabelecimentos.setAvalicaofinal();
-		estabelecimentos.setCategoria();
-		
 		return dao.inserirEstabelecimento(estabelecimentos);
 	}
 	
