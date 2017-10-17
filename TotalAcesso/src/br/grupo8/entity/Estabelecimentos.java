@@ -7,6 +7,7 @@ public class Estabelecimentos {
 	private String end;
 	private int tel;
 	private double avaliacaofinal;
+	private Categoria categoria;
 	
 	public int getId() {
 		return id;
@@ -14,7 +15,7 @@ public class Estabelecimentos {
 	public void setId(int id) {
 		this.id = id;
 	}
-	private String getNome() {
+	public String getNome() {
 		return nome;
 	}
 	public void setNome(String nome) {
@@ -39,10 +40,17 @@ public class Estabelecimentos {
 	public void setAvaliacaofinal(double avaliacaofinal) {
 		this.avaliacaofinal = avaliacaofinal;
 	}
+	
+	public Categoria getCategoria() {
+		return categoria;
+	}
+	public void setCategoria(Categoria categoria) {
+		this.categoria = categoria;
+	}
 	@Override
 	public String toString() {
 		return "Estabelecimento [id_estabelecimento=" + id + ", nome_fantasia=" + nome + 
-				",endereco=" + end+ ", telefone=" + tel+ "]";
+				",endereco=" + end+ ", telefone=" + tel+ ", categoria"+categoria+"]";
 	}
 	
 

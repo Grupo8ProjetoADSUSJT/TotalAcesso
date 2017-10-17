@@ -17,6 +17,12 @@
 		<property name="prefix" value="/WEB-INF/views/" />
 		<property name="suffix" value=".jsp" />
 	</bean>
+		<bean id="mysqlDataSource" class="org.apache.commons.dbcp.BasicDataSource">
+		<property name="driverClassName" value="com.mysql.jdbc.Driver"></property>
+		<property name="url" value="jdbc:mysql://localhost/totalacesso"></property>
+		<property name="username" value="alunos"></property>
+		<property name="password" value="alunos"></property>
+	</bean>
 	<mvc:interceptors>
 		<bean class="br.grupo8.interceptor.AutorizadorInterceptor" />
 	</mvc:interceptors>

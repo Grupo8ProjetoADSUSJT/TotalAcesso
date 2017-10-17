@@ -6,12 +6,12 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.Date;
 
-import br.grupo8.dao.ConnectionFactory;
+import org.springframework.stereotype.Repository;
+
 import br.grupo8.entity.Avaliacoes;
 import br.grupo8.entity.Categoria;
-
+@Repository
 public class AvaliacoesDAO {
 Connection conn;
 	public int inserirAvaliacoes(Avaliacoes avaliacoes) throws IOException {
