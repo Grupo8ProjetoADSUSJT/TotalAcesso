@@ -34,8 +34,8 @@ public class EstabelecimentosDAO {
 		try (PreparedStatement pst = conn.prepareStatement(comando);) {
 			pst.setString(1, estabelecimentos.getNome());
 			pst.setString(2, estabelecimentos.getEnd());
-			pst.setDate(3, new java.sql.Date(estabelecimentos.getDataAbertura()
-					.getTime()));
+			pst.setInt(3, estabelecimentos.getTel());
+			pst.setDouble(4, estabelecimentos.getAvaliacaofinal());
 			pst.setInt(4, estabelecimentos.getCategoria().getId());
 			pst.execute();
 			// pegar o ultimo id inserido nesta sessao
@@ -57,9 +57,9 @@ public class EstabelecimentosDAO {
 	}
 	public ArrayList<Estabelecimentos> listarEstabelecimentos(Categoria categoria) throws IOException{
 		ArrayList<Estabelecimentos> lista = new ArrayList<>();
-		String query = "select c.id_chamado, c.descricao, c.dt_abertura, f.nm_fila, "+
-				"c.dt_fechamento, c.status "+ 
-				"from chamado c, fila f where c.id_fila = f.id_fila and c.id_fila=?";
+		String query = "select e.id_estabelecimento, e.nome, e.endereco, c.nome_categoria, "+
+				"e.telefone, e.avalicao_final "+ 
+				"from Estabelecimento e, Categoria c where e.id_categoria = c.id_categoria and e.id_categoria=?";
 		
 		try(PreparedStatement pst = conn.prepareStatement(query);){
 			pst.setInt(1, categoria.getId());

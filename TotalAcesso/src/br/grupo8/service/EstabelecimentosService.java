@@ -2,7 +2,6 @@ package br.grupo8.service;
 
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Date;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -22,9 +21,11 @@ public class EstabelecimentosService{
 	}
 	
 	public int novoEstabelecimento(Estabelecimentos estabelecimentos) throws IOException{
-		estabelecimentos.setDataAbertura(new Date());
-		estabelecimentos.setDataFechamento(null);
-		estabelecimentos.setStatus(Estabelecimentos.ABERTO);
+		estabelecimentos.setNome();
+		estabelecimentos.setEnd();
+		estabelecimentos.setTel();
+		estabelecimentos.setAvalicaofinal();
+		estabelecimentos.setCategoria();
 		
 		return dao.inserirEstabelecimento(estabelecimentos);
 	}
